@@ -1,0 +1,10 @@
+main: me.andrejov.neswarden.Core
+name: neswarden
+version: 0.1.0
+description: "nes.mc warden"
+author: Andrejov
+commands:
+  neswarden:
+  nw:
+  nbr:
+  npbr:
