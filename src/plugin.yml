@@ -8,3 +8,7 @@ commands:
   nw:
   nbr:
   npbr:
+  npmsg:
+  spawn:
+  logic:
+  and:

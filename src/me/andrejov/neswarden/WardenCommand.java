@@ -16,6 +16,11 @@ public class WardenCommand extends Executor {
             return false;
         }
 
+        if(Util.permCheck(sender, "neswarden.admin"))
+        {
+            return true;
+        }
+
         sender.sendMessage(
             ChatColor.translateAlternateColorCodes('&', "&9[NW] &7&oneswarden version &7") + plugin.getDescription().getVersion()
         );

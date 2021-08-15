@@ -12,6 +12,12 @@ public class Core extends JavaPlugin
 
         this.getCommand("nbr").setExecutor(new BroadcastCommand(this));
         this.getCommand("npbr").setExecutor(new BroadcastCommand(this));
+        this.getCommand("npmsg").setExecutor(new BroadcastCommand(this));
+
+        this.getCommand("spawn").setExecutor(new WorldCommand(this));
+
+        this.getCommand("logic").setExecutor(new LogicCommand(this));
+        this.getCommand("and").setExecutor(new LogicCommand(this));
 
         FileConfiguration config = this.getConfig();
 
