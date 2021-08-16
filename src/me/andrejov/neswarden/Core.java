@@ -1,5 +1,7 @@
 package me.andrejov.neswarden;
 
+import java.util.Arrays;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,8 +25,12 @@ public class Core extends JavaPlugin
 
         config.options().copyDefaults(true);
         config.addDefault("broadcast-prefix", "&7\\...&9&lnes.&7.../ &f: ");
+        config.addDefault("disable-command", Arrays.asList());
+        config.addDefault("disable-response", "@npmsg %player% &c:3");
 
         this.saveConfig();
+
+        new DisableHandler(this);
     }
 
     @Override
