@@ -12,3 +12,5 @@ commands:
   spawn:
   logic:
   and:
+  uc:
+  ncc:

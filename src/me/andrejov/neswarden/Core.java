@@ -21,6 +21,9 @@ public class Core extends JavaPlugin
         this.getCommand("logic").setExecutor(new LogicCommand(this));
         this.getCommand("and").setExecutor(new LogicCommand(this));
 
+        this.getCommand("ncc").setExecutor(new CustomCommand(this));
+        this.getCommand("uc").setExecutor(new CustomCommand(this));
+
         FileConfiguration config = this.getConfig();
 
         config.options().copyDefaults(true);
