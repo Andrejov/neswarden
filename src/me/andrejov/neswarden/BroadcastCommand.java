@@ -14,7 +14,7 @@ public class BroadcastCommand extends Executor {
     @Override
     public boolean execute(CommandSender sender, Command command, String lcname, String label, String[] args) {
 
-        if(Util.permCheck(sender, "neswarden.broadcast"))
+        if(plugin.getUtil().permCheck(sender, "neswarden.broadcast"))
         {
             return true;
         }
@@ -35,7 +35,7 @@ public class BroadcastCommand extends Executor {
         {
             if(args.length < 2)
             {
-                Util.usage(sender, lcname, new String[] {"<player>", "<msg>"}, args.length);
+                plugin.getUtil().usage(sender, lcname, new String[] {"<player>", "<msg>"}, args.length);
                 return true;
             }
 
@@ -43,7 +43,7 @@ public class BroadcastCommand extends Executor {
 
             if(receiver == null)
             {
-                Util.usage(sender, lcname, new String[] {"<player>", "<msg>"}, 0);
+                plugin.getUtil().usage(sender, lcname, new String[] {"<player>", "<msg>"}, 0);
                 return true;
             }
 

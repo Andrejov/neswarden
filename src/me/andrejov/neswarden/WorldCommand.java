@@ -14,7 +14,7 @@ public class WorldCommand extends Executor {
     @Override
     public boolean execute(CommandSender sender, Command command, String lcname, String label, String[] args) {
 
-        if(Util.permCheck(sender, "neswarden.alias"))
+        if(plugin.getUtil().permCheck(sender, "neswarden.alias"))
         {
             return true;
         }
@@ -46,31 +46,32 @@ public class WorldCommand extends Executor {
                 return true;
             }
 
-            boolean console = false;
+            plugin.getUtil().execString(cmd, sender, args);
+            // boolean console = false;
 
-            if(cmd.startsWith("@"))
-            {
-                console = true;
-                cmd = cmd.substring(1);
-            }
+            // if(cmd.startsWith("@"))
+            // {
+            //     console = true;
+            //     cmd = cmd.substring(1);
+            // }
 
-            cmd = cmd.replace("%player%", p.getName());
-            cmd = cmd.replace("%world%", p.getWorld().getName());
+            // cmd = cmd.replace("%player%", p.getName());
+            // cmd = cmd.replace("%world%", p.getWorld().getName());
 
-            plugin.getLogger().info("Executing \'" + cmd + "\'' as " + (console ? "console" : "player"));
+            // plugin.getLogger().info("Executing \'" + cmd + "\'' as " + (console ? "console" : "player"));
 
-            if(console)
-            {
-                plugin.getServer().dispatchCommand(
-                    plugin.getServer().getConsoleSender(),
-                    cmd
-                );
-            }else{
-                plugin.getServer().dispatchCommand(
-                    sender,
-                    cmd
-                );
-            }
+            // if(console)
+            // {
+            //     plugin.getServer().dispatchCommand(
+            //         plugin.getServer().getConsoleSender(),
+            //         cmd
+            //     );
+            // }else{
+            //     plugin.getServer().dispatchCommand(
+            //         sender,
+            //         cmd
+            //     );
+            // }
             return true;
         }else{
             sender.sendMessage(ChatColor.RED + "[NW] This command can only be used by players");

@@ -12,7 +12,7 @@ public class LogicCommand extends Executor {
     @Override
     public boolean execute(CommandSender sender, Command command, String lcname, String label, String[] args) {
 
-        if(Util.permCheck(sender, "neswarden.logic"))
+        if(plugin.getUtil().permCheck(sender, "neswarden.logic"))
         {
             return true;
         }

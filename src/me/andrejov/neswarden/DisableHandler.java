@@ -3,7 +3,6 @@ package me.andrejov.neswarden;
 import java.util.Collection;
 import java.util.List;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -71,29 +70,32 @@ public class DisableHandler implements Listener {
         for (String string : disabled) {
             if(string.toLowerCase().equals(cmd))
             {
-                String response = plugin.getConfig().getString("disable-response")
-                    .replace("%player%", e.getPlayer().getName())
-                    .replace("%world%", e.getPlayer().getWorld().getName());
-                boolean console = false;
+                String response = plugin.getConfig().getString("disable-response");
+                // String response = plugin.getConfig().getString("disable-response")
+                //     .replace("%player%", e.getPlayer().getName())
+                //     .replace("%world%", e.getPlayer().getWorld().getName());
+                // boolean console = false;
 
-                if(response.startsWith("@"))
-                {
-                    response = response.substring(1);
-                    console = true;
-                }
+                // if(response.startsWith("@"))
+                // {
+                //     response = response.substring(1);
+                //     console = true;
+                // }
 
-                if(console)
-                {
-                    plugin.getServer().dispatchCommand(
-                        plugin.getServer().getConsoleSender(),
-                        response
-                    );
-                }else{
-                    plugin.getServer().dispatchCommand(
-                        e.getPlayer(),
-                        response
-                    );
-                }
+                // if(console)
+                // {
+                //     plugin.getServer().dispatchCommand(
+                //         plugin.getServer().getConsoleSender(),
+                //         response
+                //     );
+                // }else{
+                //     plugin.getServer().dispatchCommand(
+                //         e.getPlayer(),
+                //         response
+                //     );
+                // }
+
+                plugin.getUtil().execString(response, e.getPlayer());
 
                 e.setCancelled(true);
                 return;

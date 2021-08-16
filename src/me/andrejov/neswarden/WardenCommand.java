@@ -16,7 +16,7 @@ public class WardenCommand extends Executor {
             return false;
         }
 
-        if(Util.permCheck(sender, "neswarden.admin"))
+        if(plugin.getUtil().permCheck(sender, "neswarden.admin"))
         {
             return true;
         }

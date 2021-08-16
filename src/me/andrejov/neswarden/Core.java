@@ -7,6 +7,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin
 {
+    // JoinHandler joinModule;
+
+    Util util;
+
     @Override
     public void onEnable() {
         this.getCommand("neswarden").setExecutor(new WardenCommand(this));
@@ -24,6 +28,8 @@ public class Core extends JavaPlugin
         this.getCommand("ncc").setExecutor(new CustomCommand(this));
         this.getCommand("uc").setExecutor(new CustomCommand(this));
 
+        this.getCommand("joins").setExecutor(new JoinHandler(this));
+
         FileConfiguration config = this.getConfig();
 
         config.options().copyDefaults(true);
@@ -34,10 +40,18 @@ public class Core extends JavaPlugin
         this.saveConfig();
 
         new DisableHandler(this);
+        new JoinHandler(this);
+
+        this.util = new Util(this);
     }
 
     @Override
     public void onDisable() {
 
+    }
+
+    public Util getUtil()
+    {
+        return this.util;
     }
 }
