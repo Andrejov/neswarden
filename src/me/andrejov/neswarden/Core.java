@@ -2,6 +2,8 @@ package me.andrejov.neswarden;
 
 import java.util.Arrays;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -49,6 +51,27 @@ public class Core extends JavaPlugin
         config.addDefault("disable-response", "@npmsg %player% &c:3");
 
         this.saveConfig();
+
+        CommandSender c = this.getServer().getConsoleSender();
+        
+        this.getServer().getScheduler().scheduleSyncDelayedTask(
+            this,
+            new Runnable(){
+                public void run()
+                {
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9  █&f░&9▄▄▀█&f░&9▄▄█&f░&9▄▄█████"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9  █&f░&9██&f░&9█&f░&9▄▄█▄▄▀█▀▀██"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9  █▄██▄█▄▄▄█▄▄▄█▄▄██"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9     Welcome back"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', "&9 after a little break"));
+                    c.sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+                }
+            }
+        );
+
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -63,6 +64,16 @@ public class JoinHandler extends Executor implements Listener {
      */
     public void onPlayer(Player player)
     {
+        plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
+            public void run() {
+                onPlayerDelayed(player);
+            }
+        }, 15L);
+        
+    }
+
+    public void onPlayerDelayed(Player player)
+    {
         boolean action = appendAction(player, "joinw");
         // plugin.getLogger().info("act " + action);
 
@@ -74,11 +85,7 @@ public class JoinHandler extends Executor implements Listener {
 
             if(cmd != null)
             {
-                plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
-                    public void run() {
-                        plugin.getUtil().execString(cmd, player);
-                    }
-                }, 20L);
+                plugin.getUtil().execString(cmd, player);
             }
 
             // this.plugin.getServer().dispatchCommand(
@@ -171,14 +178,18 @@ public class JoinHandler extends Executor implements Listener {
         this.onPlayer(e.getPlayer());
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerTeleport(PlayerTeleportEvent e)
     {
         String from = e.getFrom().getWorld().getName();
         String to = e.getTo().getWorld().getName();
 
+        // plugin.getLogger().info("from " + from + " to " + to);
+
         if(!from.equals(to))
         {
+            // String cmd = plugin.getConfig().getString("action-joinw-" + to);
+            // plugin.getLogger().info("executing " + cmd);
             this.onPlayer(e.getPlayer());
         }
     }
