@@ -17,3 +17,5 @@ commands:
   joins:
   cancel:
   to:
+  menu:
+  mode:

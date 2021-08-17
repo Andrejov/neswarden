@@ -31,6 +31,8 @@ public class Core extends JavaPlugin
         this.getCommand("npmsg").setExecutor(new BroadcastCommand(this));
 
         this.getCommand("spawn").setExecutor(new WorldCommand(this));
+        this.getCommand("menu").setExecutor(new WorldCommand(this));
+        this.getCommand("mode").setExecutor(new WorldCommand(this));
 
         this.getCommand("logic").setExecutor(new LogicCommand(this));
         this.getCommand("and").setExecutor(new LogicCommand(this));
