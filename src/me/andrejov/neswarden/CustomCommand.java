@@ -1,11 +1,8 @@
 package me.andrejov.neswarden;
 
 import java.util.List;
-import java.util.Random;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class CustomCommand extends Executor {
 

@@ -3,7 +3,6 @@ package me.andrejov.neswarden;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -79,7 +78,7 @@ public class JoinHandler extends Executor implements Listener {
                     public void run() {
                         plugin.getUtil().execString(cmd, player);
                     }
-                }, 10L);
+                }, 20L);
             }
 
             // this.plugin.getServer().dispatchCommand(

@@ -17,6 +17,8 @@ public abstract class Executor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         String lcname = command.getName().toLowerCase();
 
+        // plugin.getLogger().info("Command: " + lcname);
+
         return this.execute(sender, command, lcname, label, args);
     }
 

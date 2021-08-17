@@ -7,12 +7,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin
 {
-    // JoinHandler joinModule;
+    JoinHandler joinHandler;
+    DisableHandler disableHandler;
+    TimeoutHandler timeoutHandler;
 
     Util util;
 
     @Override
     public void onEnable() {
+        this.util = new Util(this);
+
+        this.disableHandler = new DisableHandler(this);
+        this.joinHandler = new JoinHandler(this);
+        this.timeoutHandler = new TimeoutHandler(this);
+
         this.getCommand("neswarden").setExecutor(new WardenCommand(this));
         this.getCommand("nw").setExecutor(new WardenCommand(this));
 
@@ -28,7 +36,10 @@ public class Core extends JavaPlugin
         this.getCommand("ncc").setExecutor(new CustomCommand(this));
         this.getCommand("uc").setExecutor(new CustomCommand(this));
 
-        this.getCommand("joins").setExecutor(new JoinHandler(this));
+        this.getCommand("joins").setExecutor(joinHandler);
+
+        this.getCommand("cancel").setExecutor(timeoutHandler);
+        this.getCommand("to").setExecutor(timeoutHandler);
 
         FileConfiguration config = this.getConfig();
 
@@ -38,11 +49,6 @@ public class Core extends JavaPlugin
         config.addDefault("disable-response", "@npmsg %player% &c:3");
 
         this.saveConfig();
-
-        new DisableHandler(this);
-        new JoinHandler(this);
-
-        this.util = new Util(this);
     }
 
     @Override
